@@ -1,5 +1,6 @@
 function arrayDiff(a, b) {
-  return a.filter((value) => b.indexOf(value) === -1);
+  const bSet = new Set(b);
+  return a.filter((value) => !bSet.has(value));
 }
 
 console.log(arrayDiff([1, 2, 2, 2, 3], [2])); //Output: [1, 3]
