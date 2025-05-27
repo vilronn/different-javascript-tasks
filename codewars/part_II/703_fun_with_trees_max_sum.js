@@ -31,4 +31,4 @@ const tree = new TreeNode(
   )
 );
 
-console.log(maxRootToLeafSum(tree));
+console.log(maxRootToLeafSum(tree)); //23
