@@ -1,30 +1,47 @@
-function flattenOneLevel(map) {
+function flattenMap(map) {
   const result = {};
 
-  for (let key in map) {
-    const value = map[key];
+  function flatten(obj, path) {
+    for (let key in obj) {
+      const value = obj[key];
+      const fullPath = path ? `${path}/${key}` : key;
 
-    if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-      for (let innerKey in value) {
-        result[`${key}/${innerKey}`] = value[innerKey];
+      if (
+        value !== null &&
+        typeof value === 'object' &&
+        !Array.isArray(value)
+      ) {
+        flatten(value, fullPath);
+      } else {
+        result[fullPath] = value;
       }
-    } else {
-      result[key] = value;
     }
   }
 
+  flatten(map, '');
   return result;
 }
 
-console.log(flattenOneLevel({
-  a: {
-    b: 1,
-    c: 2
-  },
-  d: 3
-}));
-//   'a/b': 1,
-//   'a/c': 2,
-//   'd': 3
-// }
+const input = {
+  'a': {
+    'b': {
+      'c': 12,
+      'd': 'Hello World'
+    },
+    'e': [1,2,3]
+  }
+};
 
+const expectedOutput = {
+  'a/b/c': 12,
+  'a/b/d': 'Hello World',
+  'a/e': [1,2,3]
+};
+
+const actualOutput = flattenMap(input);
+
+console.log("actualOutput:", actualOutput);
+console.log("expectedOutput:", expectedOutput);
+
+const isEqual = JSON.stringify(actualOutput) === JSON.stringify(expectedOutput);
+console.log("Test passed:", isEqual);
