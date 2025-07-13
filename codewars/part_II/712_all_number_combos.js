@@ -21,4 +21,8 @@ function combos(num) {
   return result;
 }
 
-console.log(combos(3)); //[ [ 1, 1, 1 ], [ 1, 2 ], [ 3 ] ]
+console.log(combos(3)); // [ [ 1, 1, 1 ], [ 1, 2 ], [ 3 ] ]
+console.log(combos(1)); // [[1]]
+console.log(combos(2)); // [[1, 1], [2]]
+console.log(combos(3)); // [[1, 1, 1], [1, 2], [3]]
+console.log(combos(4)); // [[1,1,1,1], [1,1,2], [1,3], [2,2], [4]]
