@@ -26,3 +26,5 @@ console.log(combos(1)); // [[1]]
 console.log(combos(2)); // [[1, 1], [2]]
 console.log(combos(3)); // [[1, 1, 1], [1, 2], [3]]
 console.log(combos(4)); // [[1,1,1,1], [1,1,2], [1,3], [2,2], [4]]
+console.log(combos(0)); // Error: num must be a positive integer less than 30
+console.log(combos(29).length); // max num
